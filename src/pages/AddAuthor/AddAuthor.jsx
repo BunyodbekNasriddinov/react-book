@@ -23,6 +23,7 @@ export const AddAuthor = () => {
   const token = useSelector(state => state.token.token);
   const genres = useSelector((state) => state.genres.genres);
   const [authorImage, setAuthorImage] = useState({ objectImg: "", image: "" });
+  const [genreId, setGenreId] = useState(1);
 
   const initialValues = {
     first_name: "", last_name: "", date_of_birth: "", date_of_death: "", country: "", genre_id: "", bio: "",
@@ -35,23 +36,17 @@ export const AddAuthor = () => {
       .required("A date of birdth required!"),
     country: Yup.string()
       .required("Country required!"),
-    // genre_id: Yup.string()
-    //   .required("Genre id required!"),
     bio: Yup.string().required('Bio required')
   });
 
-  console.log(genres);
-
-
   const handleSubmit = ({ first_name, last_name, date_of_birth, date_of_death, country, genre_id, bio }) => {
     const formData = new FormData();
-    console.log(genre_id);
     formData.append("first_name", first_name);
     formData.append("last_name", last_name);
     formData.append("date_of_birth", date_of_birth);
     formData.append("date_of_death", date_of_death);
     formData.append("country", country);
-    formData.append("genre_id", genre_id.value);
+    formData.append("genre_id", genreId);
     formData.append("bio", bio);
     formData.append("image", authorImage.image)
 
@@ -83,7 +78,8 @@ export const AddAuthor = () => {
   }
 
   const handleChange = (evt) => {
-    
+    setGenreId(evt.target.value);
+    console.log(evt.target.value);
   }
 
   return <>
@@ -114,8 +110,7 @@ export const AddAuthor = () => {
             <Error>
               <ErrorMessage name='country' />
             </Error>
-            <Input as='select' name='genre_id'>
-              <Option selected disabled defaultValue='1' onChange={handleChange}>Select genre</Option>
+            <Input onChange={(evt) => handleChange(evt)} as='select' name='genre_id'>
               {genres?.map(item => <Option key={item.id} value={item.id}>
                 {item.name}
               </Option>)}
