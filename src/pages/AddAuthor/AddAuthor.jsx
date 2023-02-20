@@ -17,7 +17,7 @@ import { BASE_URL } from "@api/url";
 import { toast } from "react-toastify";
 import { Error } from "@components/ProfileEdit/ProfileEdit.style.jsx";
 import { useSelector } from "react-redux";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export const AddAuthor = () => {
   const token = useSelector(state => state.token.token);
@@ -26,7 +26,7 @@ export const AddAuthor = () => {
   const [genreId, setGenreId] = useState(1);
 
   const initialValues = {
-    first_name: "", last_name: "", date_of_birth: "", date_of_death: "", country: "", genre_id: "", bio: "",
+    first_name: "", last_name: "", date_of_birth: "", date_of_death: "", country: "", bio: "",
   };
 
   const validationSchema = Yup.object({
@@ -39,7 +39,7 @@ export const AddAuthor = () => {
     bio: Yup.string().required('Bio required')
   });
 
-  const handleSubmit = ({ first_name, last_name, date_of_birth, date_of_death, country, genre_id, bio }) => {
+  const handleSubmit = ({ first_name, last_name, date_of_birth, date_of_death, country, bio }) => {
     const formData = new FormData();
     formData.append("first_name", first_name);
     formData.append("last_name", last_name);
@@ -69,8 +69,6 @@ export const AddAuthor = () => {
       })
   }
 
-  console.log(genres);
-
   const handleImage = (evt) => {
     setAuthorImage({
       objectImg: URL.createObjectURL(evt.currentTarget.files[0]), image: evt.currentTarget.files[0],
@@ -79,7 +77,6 @@ export const AddAuthor = () => {
 
   const handleChange = (evt) => {
     setGenreId(evt.target.value);
-    console.log(evt.target.value);
   }
 
   return <>

@@ -17,13 +17,17 @@ import { toast } from "react-toastify";
 import { Error } from "@components/ProfileEdit/ProfileEdit.style";
 import { useSelector } from "react-redux";
 import { useState } from "react";
+import { Option } from "../AddAuthor/AddAuthor.style";
 
 export const AddBook = () => {
   const token = useSelector(state => state.token.token);
+  const user = useSelector(state => state.user.user);
+  const genres = useSelector((state) => state.genres.genres);
+  const [genreId, setGenreId] = useState(1)
   const [bookImage, setbookImage] = useState({ objectImg: "", image: "" })
 
   const initialValues = {
-    first_name: "", last_name: "", date_of_birth: "", date_of_death: "", country: "", genre_id: "", bio: "",
+    first_name: "", last_name: "", date_of_birth: "", date_of_death: "", country: "", bio: "",
   };
 
   const validationSchema = Yup.object({
@@ -32,28 +36,24 @@ export const AddBook = () => {
     price: Yup.string().required("Price required"),
     year: Yup.string()
       .required("Year required"),
-    genre_id: Yup.string()
-      .required("Genre id required!"),
-    author_id: Yup.string()
-      .required("Author id required!"),
     desctiption: Yup.string()
       .required("Desctiption required!"),
   });
 
+  console.log(user);
 
-  const handleSubmit = ({ title, page, year, price, author_id, genre_id, desctiption }) => {
+  const handleSubmit = ({ title, page, year, price, desctiption }) => {
     const formData = new FormData();
-    console.log(token);
     formData.append("title", title);
     formData.append("page", page);
     formData.append("year", year);
     formData.append("price", price);
-    formData.append("author_id", author_id);
-    formData.append("genre_id", genre_id);
-    formData.append("desctiption", desctiption);
+    formData.append("genre_id", genreId);
+    formData.append("author_id", user.id);
+    formData.append("description", desctiption);
     formData.append("image", bookImage.image)
 
-    axios.post(BASE_URL + "author", formData, {
+    axios.post(BASE_URL + "book", formData, {
       headers: {
         Authorization: token,
       }
@@ -105,15 +105,12 @@ export const AddBook = () => {
             <Error>
               <ErrorMessage name='price' />
             </Error>
-            <Input type='text' placeholder='Genre id' name='genre_id' />
-            <Error>
-              <ErrorMessage name='genre_id' />
-            </Error>
-            <Input type='text' placeholder='Author id' name='author_id' />
-            <Error>
-              <ErrorMessage name='author_id' />
-            </Error>
-            <Input type='text' placeholder='Desctiption' name='desctiption' />
+            <Input as='select' onChange={evt => setGenreId(evt.target.value)}>
+              {
+                genres.map(item => <Option key={item.id} value={item.id}>{item.name}</Option>)
+              }
+            </Input>
+            <Input type='text' placeholder='Bio' name='desctiption' />
             <Error>
               <ErrorMessage name='desctiption' />
             </Error>
