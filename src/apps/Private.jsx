@@ -16,6 +16,7 @@ import { HomeTemuriylar } from "@/components/HomeCategory/Temuriylar";
 import { HomeJadid } from "@/components/HomeCategory/Jadid";
 import { HomeSovet } from "@/components/HomeCategory/Sovet";
 import { HomeMustaqillik } from "@/components/HomeCategory/Mustaqillik";
+import { AuthorSingle } from "@/pages/AuthorSingle";
 
 export const Private = () => {
   return <>
@@ -34,6 +35,9 @@ export const Private = () => {
         <Route path='sovetlar' element={<Sovet />} />
         <Route path='mustaqillik' element={<Mustaqillik />} />
       </Route>
+
+      <Route path='/author/:id' element={<AuthorSingle />} />
+
       <Route path='/profile' element={<Profile />} >
         <Route path='/profile' element={<ProfileEdit />} />
         <Route path='edit' element={<ProfileEdit />} />

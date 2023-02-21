@@ -9,7 +9,10 @@ export const Block = styled.div`
   border-radius: 22px;
 `;
 
-export const Image = styled.img``;
+export const Image = styled.img`
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+`;
 
 export const ContentBlock = styled.div`
   padding: 16px;
@@ -24,9 +27,6 @@ export const Title = styled.h3`
   font-size: 24px;
   line-height: 36px;
   color: #000000;
-  flex: none;
-  order: 0;
-  flex-grow: 0;
 `;
 
 export const Text = styled.p`
@@ -37,7 +37,4 @@ export const Text = styled.p`
   font-size: 16px;
   line-height: 24px;
   color: rgba(0, 0, 0, 0.6);
-  flex: none;
-  order: 0;
-  flex-grow: 0;
 `;

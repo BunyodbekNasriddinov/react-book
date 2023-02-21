@@ -1,7 +1,7 @@
 import { BASE_URL } from "@/API/url";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { BookCard } from "../BookCard/BookCard";
+import { AuthorCard } from "../AuthorCard/AuthorCard";
 import { Container } from "../GlobalStyle/GlobalStyle";
 export const HomeMustaqillik = () => {
   const [book, setBook] = useState([]);
@@ -9,7 +9,6 @@ export const HomeMustaqillik = () => {
   useEffect(() => {
     axios.get(BASE_URL + 'author/genreId/4').then((data) => {
       if (data.status === 201) {
-        console.log(data);
         setBook(data.data);
       }
     });
@@ -19,7 +18,7 @@ export const HomeMustaqillik = () => {
   return (
     <Container>
       <div className="row my-5 gap-3 justify-content-center">
-        {book.map((book) => <BookCard obj={book} key={book.id} />)}
+        {book.map((book) => <AuthorCard obj={book} key={book.id} />)}
       </div>
     </Container>
   );
