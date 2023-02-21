@@ -65,3 +65,21 @@ export const YearNumbers = styled.span`
   line-height: 144.4%;
   color: #d1b89d;
 `;
+
+export const SingleSlider = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-top: 100px;
+`;
+
+export const SingleSliderInner = styled.div``;
+
+export const BookArt = styled.h2`
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 31px;
+  line-height: 46px;
+  text-align: center;
+  color: #d1b89d;
+`;

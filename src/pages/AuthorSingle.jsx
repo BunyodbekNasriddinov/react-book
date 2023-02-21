@@ -1,3 +1,4 @@
+import { book } from "@/API/book";
 import { BASE_URL } from "@/API/url";
 import { BookCard } from "@/components/BookCard/BookCard";
 import { Container } from "@/components/GlobalStyle/GlobalStyle";
@@ -5,8 +6,8 @@ import { Header } from "@/components/Header/Header";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
-import { AuthorPic, AuthorText, InnerDiv, InnerWrapper, SideDiv, Title, WrapperDiv, YearNumbers, Years, Texts } from "./AuthorSingle.styled";
+import { Link, useParams } from "react-router-dom";
+import { AuthorPic, AuthorText, InnerDiv, InnerWrapper, SideDiv, Title, WrapperDiv, YearNumbers, Years, Texts, SingleSlider, SingleSliderInner, BookArt } from "./AuthorSingle.styled";
 
 export const AuthorSingle = () => {
   const [user, setUser] = useState([]);
@@ -32,9 +33,9 @@ export const AuthorSingle = () => {
       headers: { Authorization: token }
     }).then((data) => {
       if (data) {
-        setBooks(data)
+        setBooks(data.data)
       }
-    })
+    }).catch((err) => console.log(err))
   }, [])
 
 
@@ -66,7 +67,17 @@ export const AuthorSingle = () => {
             </SideDiv>
           </WrapperDiv> : <h2>Nimadir xato</h2>
         }
-        {books.map((authorBooks) => <BookCard obj={authorBooks} key={authorBooks.id} />)}
+        <SingleSlider>
+          <SingleSliderInner>
+            <BookArt>Asarlari</BookArt>
+          </SingleSliderInner>
+          <BookArt>
+            <Link className="text-decoration-none text-black fs-5" to='/'>Barchasini ko'rish</Link>
+          </BookArt>
+        </SingleSlider>
+        {
+          books.map((book) => <BookCard obj={book} key={book.id} />)
+        }
       </Container>
     </>
   )
