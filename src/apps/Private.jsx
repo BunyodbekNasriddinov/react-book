@@ -12,11 +12,21 @@ import { Temuriylar } from "@/components/BookCategory/Temuriylar";
 import { Sovet } from "@/components/BookCategory/Sovet";
 import { Mustaqillik } from "@/components/BookCategory/Mustaqillik";
 import { Jadid } from "@/components/BookCategory/Jadid";
+import { HomeTemuriylar } from "@/components/HomeCategory/Temuriylar";
+import { HomeJadid } from "@/components/HomeCategory/Jadid";
+import { HomeSovet } from "@/components/HomeCategory/Sovet";
+import { HomeMustaqillik } from "@/components/HomeCategory/Mustaqillik";
 
 export const Private = () => {
   return <>
     <Routes>
-      <Route path='/' element={<Home />} />
+      <Route path='/' element={<Home />}>
+        <Route path='' element={<HomeTemuriylar />} />
+        <Route path='temuriylar' element={<HomeTemuriylar />} />
+        <Route path='jadidlar' element={<HomeJadid />} />
+        <Route path='sovetlar' element={<HomeSovet />} />
+        <Route path='mustaqillik' element={<HomeMustaqillik />} />
+      </Route>
       <Route path='/books' element={<Books />} >
         <Route path='' element={<Temuriylar />} />
         <Route path='temuriylar' element={<Temuriylar />} />
