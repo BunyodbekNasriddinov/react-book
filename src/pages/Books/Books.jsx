@@ -1,15 +1,15 @@
 import { Header } from '@/components/Header';
-import { HomeCategory } from '@/components/HomeCategory/HomeCategory';
 import { HomeHero } from '@/components/HomeHero';
 import React from 'react'
 import { Outlet } from "react-router-dom";
+import { BookCategory } from '@/components/BookCategory/BookCategory';
 
 export const Books = () => {
   return (
     <>
       <Header />
       <HomeHero />
-      <HomeCategory />
+      <BookCategory />
       <Outlet />
     </>
   )

@@ -1,15 +1,17 @@
-import { Container } from '@/components/GlobalStyle'
-import React from 'react'
-import { Block, Image, Title } from './BookCard.style'
+import { BASE_URL } from '@/API/url';
+import { Link } from 'react-router-dom';
+import { Image, Texts, Title } from './BookCard.style';
 
-export const BookCard = ({ img, title, text }) => {
+export const BookCard = ({ obj }) => {
+  const { id, image, title, description } = obj;
+
   return (
     <>
-      <Block>
-        <Image src={img} width='190' height='283' alt={title} />
+      <Link className='col-md-3 card p-0' to='/'>
+        <Image className='card-img-top' src={BASE_URL + image} width='190' height='283' alt={title} />
         <Title>{title}</Title>
-        <Text>{text}</Text>
-      </Block>
+        <Texts>{description}</Texts>
+      </Link>
     </>
   )
 }

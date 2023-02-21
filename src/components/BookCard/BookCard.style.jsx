@@ -1,17 +1,12 @@
 import styled from "styled-components";
 
-export const Block = styled.div`
-  max-width: 190px;
-  width: 100%;
-`
-
 export const Image = styled.img`
   
 `
 
 export const Title = styled.h3`
   margin: 12px 0 0;
-  padding: 0;
+  padding: 10px;
   font-family: 'Poppins';
   font-style: normal;
   font-weight: 500;
@@ -20,9 +15,9 @@ export const Title = styled.h3`
   color: #000000;
 `
 
-export const Text = styled.p`
+export const Texts = styled.p`
   margin: 6px 0 0;
-  padding: 0;
+  padding: 10px;
   font-family: 'Poppins';
   font-style: normal;
   font-weight: 400;

@@ -8,6 +8,7 @@ import App from "./App";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import '@components/GlobalStyle/main.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <BrowserRouter>

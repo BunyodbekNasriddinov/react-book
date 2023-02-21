@@ -1,5 +1,5 @@
 import { Header } from "@/components/Header";
-import { HomeCategory } from "@/components/HomeCategory/HomeCategory";
+// import { HomeCategory } from "@/components/Category/Category";
 import { HomeHero } from "@/components/HomeHero";
 
 export const Home = () => {
@@ -7,7 +7,7 @@ export const Home = () => {
     <>
       <Header />
       <HomeHero />
-      <HomeCategory />
+      {/* <HomeCategory /> */}
     </>
   )
 }
