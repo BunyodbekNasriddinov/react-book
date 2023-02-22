@@ -74,6 +74,11 @@ export const SingleSlider = styled.div`
 
 export const SingleSliderInner = styled.div``;
 
+export const BookList = styled.div`
+  display: flex;
+  column-gap: 20px;
+`
+
 export const BookArt = styled.h2`
   font-family: "Poppins";
   font-style: normal;

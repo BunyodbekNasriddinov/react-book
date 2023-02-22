@@ -7,7 +7,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
-import { AuthorPic, AuthorText, InnerDiv, InnerWrapper, SideDiv, Title, WrapperDiv, YearNumbers, Years, Texts, SingleSlider, SingleSliderInner, BookArt } from "./AuthorSingle.styled";
+import { AuthorPic, AuthorText, InnerDiv, InnerWrapper, SideDiv, Title, WrapperDiv, YearNumbers, Years, Texts, SingleSlider, SingleSliderInner, BookArt, BookList } from "./AuthorSingle.styled";
 
 export const AuthorSingle = () => {
   const [user, setUser] = useState([]);
@@ -75,9 +75,11 @@ export const AuthorSingle = () => {
             <Link className="text-decoration-none text-black fs-5" to='/'>Barchasini ko'rish</Link>
           </BookArt>
         </SingleSlider>
-        {
-          books.map((book) => <BookCard obj={book} key={book.id} />)
-        }
+        <BookList>
+          {
+            books.map((book) => <BookCard obj={book} author={user} key={book.id} />)
+          }
+        </BookList>
       </Container>
     </>
   )

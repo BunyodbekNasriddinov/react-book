@@ -1,7 +1,13 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
+export const BookLink = styled(Link)`
+  display: block;
+  width: 190px;
+`
+
 export const Image = styled.img`
-  
+  border-radius: 15px;
 `
 
 export const Title = styled.h3`

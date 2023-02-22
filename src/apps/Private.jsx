@@ -17,6 +17,7 @@ import { HomeJadid } from "@/components/HomeCategory/Jadid";
 import { HomeSovet } from "@/components/HomeCategory/Sovet";
 import { HomeMustaqillik } from "@/components/HomeCategory/Mustaqillik";
 import { AuthorSingle } from "@/pages/AuthorSingle";
+import { BookSingle } from "@/pages/BookSingle/BookSingle";
 
 export const Private = () => {
   return <>
@@ -37,6 +38,10 @@ export const Private = () => {
       </Route>
 
       <Route path='/author/:id' element={<AuthorSingle />} />
+      <Route path='/author/books/:id' element={<BookSingle />} />
+
+      {/* Malumotni state orqali olib olish */}
+      {/* Malumotni cardga propsdan berib yuborish */}
 
       <Route path='/profile' element={<Profile />} >
         <Route path='/profile' element={<ProfileEdit />} />
